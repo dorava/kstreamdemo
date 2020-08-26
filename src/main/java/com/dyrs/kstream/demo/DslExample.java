@@ -22,7 +22,7 @@ public class DslExample {
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
-        var streams = new KafkaStreams(builder.build(), config);
+        KafkaStreams streams = new KafkaStreams(builder.build(), config);
         streams.start();
         // close Kafka Streams when the JVM shuts down (e.g. SIGTERM)
         Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
